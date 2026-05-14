@@ -7,7 +7,14 @@ const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
 dotenv.config()
 
 const app = express()
-app.use(cors())
+app.use(cors({
+  origin: [
+    'https://media-app-nu-one.vercel.app/', // ← ton URL Vercel
+    'http://localhost:5173' // ← pour le dev local
+  ],
+  methods: ['GET', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}))
 
 const upload = multer({ storage: multer.memoryStorage() })
 
