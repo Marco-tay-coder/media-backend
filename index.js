@@ -8,12 +8,9 @@ dotenv.config()
 
 const app = express()
 app.use(cors({
-  origin: [
-    'https://media-app-nu-one.vercel.app/', // ← ton URL Vercel
-    'http://localhost:5173' // ← pour le dev local
-  ],
-  methods: ['GET', 'POST', 'DELETE'],
-  allowedHeaders: ['Content-Type']
+  origin: '*',
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
 const upload = multer({ storage: multer.memoryStorage() })
